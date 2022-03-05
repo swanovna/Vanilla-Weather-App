@@ -11,6 +11,10 @@ h1 {
   text-align: left;
 }
 
+li:first-letter {
+  text-transform: capitalize;
+}
+
 .capture {
   color: #70757a;
   display: block;

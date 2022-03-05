@@ -14,14 +14,15 @@
     />
 
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
       <div class="weather-app">
-        <h1>Auckland CBD, Auckland</h1>
+        <h1 id="city"></h1>
         <ul class="general">
-          <li>Friday 9:00 pm</li>
-          <li>Clear with periodic clouds</li>
+          <li id="date">Friday 9:00 pm</li>
+          <li id="conditions"></li>
         </ul>
         <div class="row">
           <div class="col-6">
@@ -29,13 +30,12 @@
               id="main-icon"
               src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png"
               alt="Clear"
-            /><span id="current-temp"> 21</span>&deg;C | &deg;F
+            /><span id="current-temp">21</span>&deg;C | &deg;F
           </div>
           <div class="col-6 text-end">
             <ul class="details">
-              <li>Precipitation: 2%</li>
-              <li>Humidity: 63%</li>
-              <li>Wind: 16 km/h</li>
+              <li>Humidity: <span id="humidity"></span>%</li>
+              <li>Wind: <span id="wind"></span> km/h</li>
             </ul>
           </div>
         </div>
