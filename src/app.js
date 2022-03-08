@@ -50,8 +50,20 @@ function displayTemperature(response) {
   windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
-let apiKey = "342444b367d13cc01160f5e0ec42822b";
-let city = "Auckland";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function search(city) {
+  let apiKey = "342444b367d13cc01160f5e0ec42822b";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-axios.get(apiUrl).then(displayTemperature);
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-name");
+  search(cityInputElement.value);
+}
+
+search("Auckland");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
