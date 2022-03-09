@@ -1,3 +1,21 @@
+function convertToCelsius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#current-temp");
+  celsiusElement.classList.add("active");
+  fahrenElement.classList.remove("active");
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
+}
+
+function convertToFahren(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#current-temp");
+
+  celsiusElement.classList.remove("active");
+  fahrenElement.classList.add("active");
+  let fahrenTemperature = (celsiusTemp * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenTemperature);
+}
+
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let days = [
@@ -43,8 +61,10 @@ function displayTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = response.data.main.humidity;
 
+  celsiusTemp = response.data.main.temp;
+
   let temperatureElement = document.querySelector("#current-temp");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
 
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = Math.round(response.data.wind.speed);
@@ -61,9 +81,19 @@ function handleSubmit(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-name");
   search(cityInputElement.value);
+  celsiusElement.classList.add("active");
+  fahrenElement.classList.remove("active");
 }
 
-search("Auckland");
+let celsiusTemp = null;
+
+let celsiusElement = document.querySelector("#celsius");
+celsiusElement.addEventListener("click", convertToCelsius);
+
+let fahrenElement = document.querySelector("#fahren");
+fahrenElement.addEventListener("click", convertToFahren);
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+search("Auckland");
