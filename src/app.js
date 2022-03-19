@@ -39,6 +39,29 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `            <div class="col-2">
+              <div class="forecast-day-of-the-week">${day}</div>
+              <img
+                src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png"
+                alt="Clear"
+                class="forecast-icon"
+              />
+              <span class="forecast-temperature-max">23&deg</span>
+              <span class="forecast-temperature-min">15&deg</span>
+            </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayTemperature(response) {
   console.log(response.data);
 
@@ -97,3 +120,4 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
 search("Auckland");
+displayForecast();
