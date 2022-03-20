@@ -15,15 +15,6 @@ li:first-letter {
   text-transform: capitalize;
 }
 
-.active {
-  color: #202124;
-  cursor: default;
-}
-
-.active:hover {
-  color: #202124;
-}
-
 .capture {
   color: #70757a;
   display: block;
@@ -106,9 +97,6 @@ li:first-letter {
   vertical-align: top;
 }
 
-#fahren {
-  text-decoration: none;
-}
 #main-icon {
   display: inline-block;
   height: 60px;
